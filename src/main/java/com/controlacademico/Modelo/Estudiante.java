@@ -1,6 +1,8 @@
 package com.controlacademico.Modelo;
 
-public class Estudiante {
+import java.io.Serializable;
+
+public class Estudiante implements Serializable {
     private int estudiante_id;
     private String identificacion;
     private String nombre;
