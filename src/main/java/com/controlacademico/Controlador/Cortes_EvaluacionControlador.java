@@ -1,4 +1,6 @@
 package com.controlacademico.Controlador;
+import java.util.List;
+
 import com.controlacademico.Modelo.*;
 
 public class Cortes_EvaluacionControlador {
@@ -23,5 +25,12 @@ public class Cortes_EvaluacionControlador {
     public boolean eliminarCorteEvaluacion(int id) {
         return cortes_EvaluacionDAO.delete(id);
     }
-    
+
+   public List<Cortes_Evaluacion> findAll() {
+        // La implementación correcta debe delegar la llamada al DAO
+        return cortes_EvaluacionDAO.findAll();
+    }
 }
+    
+    
+

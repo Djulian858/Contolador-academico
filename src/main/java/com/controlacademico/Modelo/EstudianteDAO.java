@@ -17,9 +17,6 @@ public class EstudianteDAO {
         this.conexion = conexion;
     }
 
-    public EstudianteDAO() {
-        //TODO Auto-generated constructor stub
-    }
 
     // Crear
     public boolean create(Estudiante estudiante) {
@@ -90,20 +87,32 @@ public class EstudianteDAO {
         return null;
     }
 
-    // Leer todos
-    public List<Estudiante> findAll() {
-        List<Estudiante> estudiantes = new ArrayList<>();
-        String sql = "SELECT * FROM estudiantes";
-        try (PreparedStatement stmt = conexion.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                estudiantes.add(mapRow(rs));
-            }
-        } catch (SQLException e) {
-            System.err.println("Error al buscar estudiantes: " + e.getMessage());
+    
+
+    
+
+// EstudianteDAO.java
+// ...
+// Leer todos
+public List<Estudiante> findAll() {
+    List<Estudiante> estudiantes = new ArrayList<>();
+    String sql = "SELECT * FROM estudiantes"; // <-- Consulta SQL
+    try (PreparedStatement stmt = conexion.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            estudiantes.add(mapRow(rs));
         }
-        return estudiantes;
+    } catch (SQLException e) {
+        System.err.println("Error al buscar estudiantes: " + e.getMessage());
     }
+    return estudiantes;
+}
+// ...
+
+
+
+
+
     // Mapeo de ResultSet a objeto Estudiante
     private Estudiante mapRow(ResultSet rs) throws SQLException {   
         Estudiante estudiante = new Estudiante();

@@ -1,4 +1,6 @@
 package com.controlacademico.Controlador;
+import java.util.List;
+
 import com.controlacademico.Modelo.*;
 
 public class Componentes_EvaluacionControlador {
@@ -23,6 +25,11 @@ public class Componentes_EvaluacionControlador {
 
     public boolean eliminarComponenteEvaluacion(int id) {
         return componentes_EvaluacionDAO.eliminarComponente(id);
+    }
+
+    public List<Componentes_Evaluacion> obtenerTodosLosComponentes() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerTodosLosComponentes'");
     }
 
 }

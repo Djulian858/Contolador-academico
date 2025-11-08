@@ -1,5 +1,9 @@
 package com.controlacademico.Controlador;
+
+import java.util.List;
+
 import com.controlacademico.Modelo.*;
+
 public class EstudianteControlador {
 
     private EstudianteDAO estudianteDAO;
@@ -24,4 +28,8 @@ public class EstudianteControlador {
         return estudianteDAO.delete(id);
     }
 
+public List<Estudiante> findAll() {
+    // LLama al método findAll() del DAO para obtener la lista de estudiantes
+    return estudianteDAO.findAll();
+}
 }

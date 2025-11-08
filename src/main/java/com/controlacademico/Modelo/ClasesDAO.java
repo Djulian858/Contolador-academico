@@ -8,10 +8,16 @@ import java.util.List;
 public class ClasesDAO { 
     private Connection conn;
 
+    // CONSTRUCTOR CORREGIDO: Inicializa la conexión
+    public ClasesDAO() {
+        this.conn = Conexion.getInstance().getConnection();
+    }
+    
+    // CREATE (Modificado para usar this.conn)
     public boolean create(Clases clases) {
         String sql = "INSERT INTO clases (curso_id, numero_clase,fecha_clase, tema_clase, descripcion_clase, comentarios_clase) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = Conexion.getInstance().getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+        // Ahora usa this.conn, que se inicializó en el constructor
+        try (PreparedStatement stmt = this.conn.prepareStatement(sql)) { 
             stmt.setInt(1, clases.getCursoId());
             stmt.setInt(2, clases.getNumeroClase());
             stmt.setDate(3, clases.getFechaClase());
@@ -23,8 +29,7 @@ public class ClasesDAO {
             System.err.println(" Error al crear clase: " + e.getMessage());
             return false;
         }
-        }
-
+    }
 
 
     // UPDATE
@@ -76,6 +81,7 @@ public class ClasesDAO {
     public List<Clases> findAll() {
         List<Clases> lista = new ArrayList<>();
         String sql = "SELECT * FROM clases";
+        // Aquí conn ya no será null
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
@@ -88,21 +94,15 @@ public class ClasesDAO {
     }
 
     // Mapeo de ResultSet a objeto Clases
-
     private Clases mapRow(ResultSet rs) throws SQLException {
         Clases clases = new Clases();
         clases.setClaseId(rs.getInt("clase_id"));
         clases.setCursoId(rs.getInt("curso_id"));
+        // ... (el resto de mapeo es correcto)
         clases.setFechaClase(rs.getDate("fecha_clase"));
         clases.setTemaClase(rs.getString("tema_clase"));
         clases.setDescripcionClase(rs.getString("descripcion_clase"));
         clases.setComentariosClase(rs.getString("comentarios_clase"));
         return clases;
     }
-
-    
-
 }
-
-
-
