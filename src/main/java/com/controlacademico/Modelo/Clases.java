@@ -1,13 +1,13 @@
 package com.controlacademico.Modelo;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Clases implements Serializable {
     private Integer claseId;
     private Integer cursoId;
     private Integer numeroClase;
-    private LocalDate fechaClase;
+    private Date fechaClase;
     private String temaClase;
     private String descripcionClase;
     private String comentariosClase;
@@ -32,10 +32,10 @@ public class Clases implements Serializable {
     public void setNumeroClase(Integer numeroClase) {
         this.numeroClase = numeroClase;
     }
-    public LocalDate getFechaClase() {
+    public Date getFechaClase() {
         return fechaClase;
     }
-    public void setFechaClase(LocalDate fechaClase) {
+    public void setFechaClase(Date fechaClase) {
         this.fechaClase = fechaClase;
     }
     public String getTemaClase() {

@@ -23,9 +23,9 @@ public class Conexion {
             String password = props.getProperty("PASSWORD");
  
             connection = DriverManager.getConnection(url, user, password);
-            System.out.println("✅ Conexión establecida correctamente a la base de datos.");
+            System.out.println("Conexión establecida correctamente a la base de datos.");
         } catch (Exception e) {
-            System.err.println("❌ Error al conectar con la base de datos: " + e.getMessage());
+            System.err.println("Error al conectar con la base de datos: " + e.getMessage());
             e.printStackTrace();
         }
     }

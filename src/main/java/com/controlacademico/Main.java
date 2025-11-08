@@ -15,7 +15,7 @@ public class Main {
                 System.out.println("✅ Conexión exitosa a la base de datos.");
                 SwingUtilities.invokeLater(() -> new MenuPrincipalframe().setVisible(true));
             } else {
-                JOptionPane.showMessageDialog(null, "❌ No se pudo establecer conexión con la base de datos.");
+                JOptionPane.showMessageDialog(null, "No se pudo establecer conexión con la base de datos.");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + e.getMessage());

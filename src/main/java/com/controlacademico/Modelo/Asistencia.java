@@ -1,13 +1,13 @@
 package com.controlacademico.Modelo;
 
     import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Asistencia implements Serializable {
     private Integer asistenciaId;
     private Integer estudianteId;
     private Integer cursoId;
-    private LocalDate fechaClase;
+    private Date fechaClase;
     private String estadoAsistencia;
     private String novedades;
 
@@ -31,10 +31,10 @@ public class Asistencia implements Serializable {
     public void setCursoId(Integer cursoId) {
         this.cursoId = cursoId;
     }
-    public LocalDate getFechaClase() {
+    public Date getFechaClase() {
         return fechaClase;
     }
-    public void setFechaClase(LocalDate fechaClase) {
+    public void setFechaClase(Date fechaClase) {
         this.fechaClase = fechaClase;
     }
     public String getEstadoAsistencia() {

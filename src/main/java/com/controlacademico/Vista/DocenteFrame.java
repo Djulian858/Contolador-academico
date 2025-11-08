@@ -1,63 +1,79 @@
 package com.controlacademico.Vista;
 
+import com.controlacademico.Modelo.Docente;
+import com.controlacademico.Modelo.DocenteDAO;
+
 import javax.swing.*;
-import java.awt.event.*;
-import com.controlacademico.Modelo.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.List;
-import java.sql.Connection;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;   
+import java.util.List;
 
+public class DocenteFrame extends JFrame {
+    private DocenteDAO docenteDAO;
 
-public class DocenteFrame {
-    private JTextField txtNombre, txtIdentificacion, txtTipo_Identificacion, txtGenero, txtCorreo, txtTitulo_Estudios, txtIdiomas, txtCertificaciones;
-    private JButton btnAgregar, btnActualizar, btnEliminar, btnListar;
+    private JTextField txtId, txtNombre, txtIdentificacion, txtTipoIdent, txtGenero, txtCorreo,
+            txtTitulo, txtIdiomas, txtCertificaciones;
     private JTable tabla;
-    private DocenteDAO dao;
-    public DocenteFrame(Connection conexion) {
+
+    public DocenteFrame(DocenteDAO dao) {
+        this.docenteDAO = dao;
+
         setTitle("Gestión de Docentes");
-        setSize(800, 600);
-        setLayout(null);
-        setLocationRelativeTo(null);
+        setSize(900, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        dao = new DocenteDAO(conexion);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout(10, 10));
 
-        JLabel lblNombre = new JLabel("Nombre:");
-        lblNombre.setBounds(30, 20, 100, 25);
-        add(lblNombre);
+        // ======== Panel de formulario ========
+        JPanel formPanel = new JPanel(new GridLayout(10, 2, 5, 5));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Datos del Docente"));
+
+        txtId = new JTextField();
         txtNombre = new JTextField();
-        txtNombre.setBounds(150, 20, 150, 25);
-        add(txtNombre);
+        txtIdentificacion = new JTextField();
+        txtTipoIdent = new JTextField();
+        txtGenero = new JTextField();
+        txtCorreo = new JTextField();
+        txtTitulo = new JTextField();
+        txtIdiomas = new JTextField();
+        txtCertificaciones = new JTextField();
 
-        // Resto de los componentes de la interfaz gráfica...
+        formPanel.add(new JLabel("ID (solo para actualizar/eliminar):"));
+        formPanel.add(txtId);
+        formPanel.add(new JLabel("Nombre del Docente:"));
+        formPanel.add(txtNombre);
+        formPanel.add(new JLabel("Identificación:"));
+        formPanel.add(txtIdentificacion);
+        formPanel.add(new JLabel("Tipo de Identificación:"));
+        formPanel.add(txtTipoIdent);
+        formPanel.add(new JLabel("Género:"));
+        formPanel.add(txtGenero);
+        formPanel.add(new JLabel("Correo:"));
+        formPanel.add(txtCorreo);
+        formPanel.add(new JLabel("Título de Estudios:"));
+        formPanel.add(txtTitulo);
+        formPanel.add(new JLabel("Idiomas:"));
+        formPanel.add(txtIdiomas);
+        formPanel.add(new JLabel("Certificaciones:"));
+        formPanel.add(txtCertificaciones);
 
+        // ======== Panel de botones ========
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JButton btnAgregar = new JButton("Agregar");
+        JButton btnActualizar = new JButton("Actualizar");
+        JButton btnEliminar = new JButton("Eliminar");
+        JButton btnBuscar = new JButton("Buscar por ID");
+        JButton btnListar = new JButton("Listar Todos");
+
+        buttonPanel.add(btnAgregar);
+        buttonPanel.add(btnActualizar);
+        buttonPanel.add(btnEliminar);
+        buttonPanel.add(btnBuscar);
+        buttonPanel.add(btnListar);
+        // ======== Tabla para mostrar docentes ========
+        tabla = new JTable();
+        JScrollPane tableScrollPane = new JScrollPane(tabla);
+        add(tableScrollPane, BorderLayout.CENTER);
     }
 
-    private void setDefaultCloseOperation(int disposeOnClose) {
-    }
-    private void setLayout(Object object) {
-    }
-    private void setSize(int i, int j) {
-    }
-    private void setTitle(String string) {
-    }
-    private void add(JLabel lblNombre) {
-    }
-    private void setLocationRelativeTo(Object object) {
-    }
-
-    private void setDefaultCloseOperation(int disposeOnClose) {
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        setDefaultCloseOperation(disposeOnClose);
-
-    }
-
-    private void setLayout(Object object) {
-        getContentPane().setLayout((LayoutManager) object);
-    }
-    private void setSize(int i, int j) {
-        setSize(i, j);
-    }
 }

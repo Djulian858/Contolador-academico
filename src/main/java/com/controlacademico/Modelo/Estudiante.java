@@ -2,6 +2,7 @@ package com.controlacademico.Modelo;
 
 import java.io.Serializable;
 
+
 public class Estudiante implements Serializable {
     private int estudiante_id;
     private String identificacion;
@@ -29,6 +30,10 @@ public class Estudiante implements Serializable {
         this.comentarios = comentarios;
         this.tipo_documento = tipo_documento;
         this.genero = genero;
+    }
+
+    public Estudiante(String nombre2, String apellido, int edad) {
+        //TODO Auto-generated constructor stub
     }
 
     public int getEstudiante_id() {

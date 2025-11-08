@@ -1,8 +1,13 @@
 package com.controlacademico.Vista;
-import javax.swing.*;
-import java.awt.*;
+import com.controlacademico.Modelo.*;
+
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+    import java.awt.event.ActionListener;
+    import javax.swing.SwingUtilities;
  
-public class MenuPrincipalframe extends JFrame {
+ public class MenuPrincipalframe extends JFrame {
  
     public MenuPrincipalframe() {
         setTitle("Sistema Académico - Menú Principal");
@@ -26,9 +31,9 @@ public class MenuPrincipalframe extends JFrame {
         JButton btnReportesAsistencia = new JButton("Reporte de Asistencia");
         JButton btnReportesNotaFinal = new JButton("Reporte Nota Final");
         JButton btnSalir = new JButton("Salir");
- 
-        // btnEstudiantes.addActionListener(e -> new EstudiantesFrame().setVisible(true));
-        // btnAsistencias.addActionListener(e -> new AsistenciasFrame().setVisible(true));
+
+        btnEstudiantes.addActionListener(e -> new EstudianteFrame().setVisible(true));
+        btnAsistencias.addActionListener(e -> new AsistenciaFrame().setVisible(true));
         // btnCursos.addActionListener(e -> new CursosFrame().setVisible(true));
         // btnCalificaciones.addActionListener(e -> new CalificacionesFrame().setVisible(true));
         // btnClases.addActionListener(e -> new ClasesFrame().setVisible(true));
@@ -65,3 +70,7 @@ public class MenuPrincipalframe extends JFrame {
         SwingUtilities.invokeLater(() -> new MenuPrincipalframe().setVisible(true));
     }
 }
+
+
+
+
